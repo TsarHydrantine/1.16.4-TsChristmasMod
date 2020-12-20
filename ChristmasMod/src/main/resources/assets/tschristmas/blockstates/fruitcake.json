@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "tschristmas:block/fruitcake",
+      "y": 90
+    },
+    "axis=y": {
+      "model": "tschristmas:block/fruitcake"
+    },
+    "axis=z": {
+      "model": "tschristmas:block/fruitcake"
+    }
+  }
+}

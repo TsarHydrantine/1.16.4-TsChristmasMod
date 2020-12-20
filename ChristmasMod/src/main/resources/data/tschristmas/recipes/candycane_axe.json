@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "X#",
+    " #"
+  ],
+  "key": {
+    "#": {
+      "item": "tschristmas:candycane"
+    },
+    "X": {
+      "item": "tschristmas:candycane_crystal"
+    }
+  },
+  "result": {
+    "item": "tschristmas:candycane_axe"
+  }
+}

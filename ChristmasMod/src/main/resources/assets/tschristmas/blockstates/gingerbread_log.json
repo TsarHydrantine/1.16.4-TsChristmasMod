@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "tschristmas:block/gingerbread_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "tschristmas:block/gingerbread_log"
+    },
+    "axis=z": {
+      "model": "tschristmas:block/gingerbread_log_horizontal",
+      "x": 90
+    }
+  }
+}

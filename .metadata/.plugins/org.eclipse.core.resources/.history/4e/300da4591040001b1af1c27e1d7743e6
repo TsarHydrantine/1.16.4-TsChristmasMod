@@ -1,0 +1,17 @@
+package com.tsarhydrantine.tsbase.tsEntity.SkeletonBoss;
+
+import net.minecraft.client.renderer.entity.model.AbstractZombieModel;
+import net.minecraft.entity.monster.GiantEntity;
+
+public class IceSkeletonModel extends AbstractZombieModel<IceSkeletonEntity>{
+
+	protected IceSkeletonModel(float modelSize, float yOffsetIn, int textureWidthIn, int textureHeightIn) {
+		super(modelSize, yOffsetIn, textureWidthIn, textureHeightIn);
+	}
+
+	@Override
+	public boolean isAggressive(IceSkeletonEntity entityIn) {
+		return true;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.tsarhydrantine.tsbase.data.client;
+
+public class ModdedItemModelProvider {
+
+}

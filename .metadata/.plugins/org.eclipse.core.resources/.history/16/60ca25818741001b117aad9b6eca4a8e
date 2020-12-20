@@ -1,0 +1,160 @@
+//Made with BlockBench 3.7.4
+package com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor;
+
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
+
+import net.minecraft.client.renderer.entity.model.BipedModel;
+import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.entity.LivingEntity;
+
+public class FruitcakeArmorModel extends BipedModel<LivingEntity> {
+	public final ModelRenderer Head;
+	public final ModelRenderer Body;
+	public final ModelRenderer Waist;
+	public final ModelRenderer RightArm;
+	public final ModelRenderer LeftArm;
+	public final ModelRenderer RightLeg;
+	public final ModelRenderer LeftLeg;
+	
+	public final ModelRenderer RightFoot;
+	public final ModelRenderer LeftFoot;
+	
+	private final ModelRenderer Fruit_0;
+	private final ModelRenderer Fruit_1;
+	private final ModelRenderer Fruit_2;
+	private final ModelRenderer Fruit_3;
+	private final ModelRenderer Fruit_4;
+	private final ModelRenderer Fruit_5;
+	private final ModelRenderer Fruit_6;
+	
+	private final ModelRenderer Fruit_r1;
+	private final ModelRenderer Fruit_r2;
+	private final ModelRenderer Fruit_r3;
+
+	public FruitcakeArmorModel(float size) {
+		super(size);
+		textureWidth = 64;
+		textureHeight = 64;
+
+		Head = new ModelRenderer(this);
+		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
+		Head.setTextureOffset(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, 1.0F, false);
+
+		Fruit_0 = new ModelRenderer(this);
+		Fruit_0.setRotationPoint(-0.96F, -8.70F, -2.24F);
+		Head.addChild(Fruit_0);
+		setRotationAngle(Fruit_0, -0.43F, 0.61F, -1.57F);
+		Fruit_0.setTextureOffset(0, 56).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, -1.0F, false);
+
+		Fruit_1 = new ModelRenderer(this);
+		Fruit_1.setRotationPoint(-3.0F, -7.0F, 0.0F);
+		Head.addChild(Fruit_1);
+		setRotationAngle(Fruit_1, -0.26F, -0.34F, -1.57F);
+		Fruit_1.setTextureOffset(16, 56).addBox(-3.0F, -4.0F, 0.0F, 4.0F, 4.0F, 4.0F, -1.0F, false);
+
+		Body = new ModelRenderer(this);
+		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
+		Body.setTextureOffset(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, 1.01F, false);
+		
+		Fruit_2 = new ModelRenderer(this);
+		Fruit_2.setRotationPoint(2.0F, 9.0F, 1.0F);
+		Body.addChild(Fruit_2);
+		setRotationAngle(Fruit_2, -0.2618F, -0.7418F, 0.0F);
+		Fruit_2.setTextureOffset(14, 47).addBox(-2.0F, -5.0F, 0.0F, 3.0F, 5.0F, 4.0F, -1.0F, false);
+
+		Fruit_3 = new ModelRenderer(this);
+		Fruit_3.setRotationPoint(-3.08F, 5.1F, 2.89F);
+		Body.addChild(Fruit_3);
+		setRotationAngle(Fruit_3, -0.3491F, 1.1345F, -2.3998F);
+		Fruit_3.setTextureOffset(0, 47).addBox(-1.41F, -2.1F, -2.39F, 3.0F, 5.0F, 4.0F, -1.0F, false);
+
+		Fruit_4 = new ModelRenderer(this);
+		Fruit_4.setRotationPoint(-1.0832F, 4.111F, -2.6004F);
+		Body.addChild(Fruit_4);
+		setRotationAngle(Fruit_4, -0.3927F, -0.3927F, 1.6144F);
+		Fruit_4.setTextureOffset(14, 47).addBox(-1.5F, -2.5F, -2.0F, 3.0F, 5.0F, 4.0F, -1.0F, false);
+
+		Waist = new ModelRenderer(this);
+		Waist.setRotationPoint(0.0F, 0.0F, 0.0F);
+		Waist.setTextureOffset(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, 0.51F, false);
+		
+		Fruit_r1 = new ModelRenderer(this);
+		Fruit_r1.setRotationPoint(-2.0832F, 9.111F, -2.6004F);
+		Waist.addChild(Fruit_r1);
+		setRotationAngle(Fruit_r1, 0.48F, -1.309F, 1.0472F);
+		Fruit_r1.setTextureOffset(14, 47).addBox(-1.4168F, -2.111F, -1.8996F, 3.0F, 5.0F, 4.0F, -1.0F, false);
+		
+		RightArm = new ModelRenderer(this);
+		RightArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
+		RightArm.setTextureOffset(40, 16).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 1.0F, false);
+
+		Fruit_5 = new ModelRenderer(this);
+		Fruit_5.setRotationPoint(-1.41F, -1.22F, -3.04F);
+		RightArm.addChild(Fruit_5);
+		setRotationAngle(Fruit_5, -0.6981F, -0.8727F, -1.5708F);
+		Fruit_5.setTextureOffset(0, 56).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, -1.0F, false);
+
+		LeftArm = new ModelRenderer(this);
+		LeftArm.setRotationPoint(5.0F, 2.0F, 0.0F);
+		LeftArm.setTextureOffset(40, 16).addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 1.0F, true);
+
+		RightLeg = new ModelRenderer(this);
+		RightLeg.setRotationPoint(-1.9F, 12.0F, 0.0F);
+		RightLeg.setTextureOffset(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 1.0F, false);
+
+		Fruit_6 = new ModelRenderer(this);
+		Fruit_6.setRotationPoint(-1.1F, 8.0F, -5.0F);
+		RightLeg.addChild(Fruit_6);
+		setRotationAngle(Fruit_6, -1.00F, -0.34F, -1.57F);
+		Fruit_6.setTextureOffset(14, 47).addBox(-2.0F, -5.0F, 0.0F, 3.0F, 5.0F, 4.0F, -1.0F, false);
+
+		LeftLeg = new ModelRenderer(this);
+		LeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
+		LeftLeg.setTextureOffset(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 1.0F, true);
+		
+		RightFoot = new ModelRenderer(this);
+		RightFoot.setRotationPoint(-1.9F, 12.0F, 0.0F);
+		RightFoot.setTextureOffset(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.5F, false);
+
+		Fruit_r2 = new ModelRenderer(this);
+		Fruit_r2.setRotationPoint(0.8168F, 3.111F, 2.3996F);
+		RightFoot.addChild(Fruit_r2);
+		setRotationAngle(Fruit_r2, -0.3927F, -0.3927F, 1.6144F);
+		Fruit_r2.setTextureOffset(0, 56).addBox(-2.5F, -1.5F, -2.0F, 4.0F, 4.0F, 4.0F, -1.0F, false);
+
+		LeftFoot = new ModelRenderer(this);
+		LeftFoot.setRotationPoint(1.7F, 17.75F, -0.75F);
+		LeftFoot.setTextureOffset(0, 16).addBox(-1.8F, -5.75F, -1.25F, 4.0F, 12.0F, 4.0F, 0.5F, true);
+
+		Fruit_r3 = new ModelRenderer(this);
+		Fruit_r3.setRotationPoint(-0.1647F, -1.0197F, -1.0618F);
+		LeftFoot.addChild(Fruit_r3);
+		setRotationAngle(Fruit_r3, -0.3927F, -0.3927F, 1.6144F);
+		Fruit_r3.setTextureOffset(0, 56).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, -1.0F, false);
+	}
+
+	@Override
+	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+		super.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+	}
+
+	@Override
+	public void setRotationAngles(LivingEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		super.setRotationAngles(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		this.Head.copyModelAngles(this.bipedHead);
+		this.Body.copyModelAngles(this.bipedBody);
+		this.RightArm.copyModelAngles(this.bipedRightArm);
+		this.LeftArm.copyModelAngles(this.bipedLeftArm);
+		this.RightLeg.copyModelAngles(this.bipedRightLeg);
+		this.LeftLeg.copyModelAngles(this.bipedLeftLeg);
+		this.RightFoot.copyModelAngles(this.bipedRightLeg);
+		this.LeftFoot.copyModelAngles(this.bipedLeftLeg);
+	}
+
+	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+		modelRenderer.rotateAngleX = x;
+		modelRenderer.rotateAngleY = y;
+		modelRenderer.rotateAngleZ = z;
+	}
+}

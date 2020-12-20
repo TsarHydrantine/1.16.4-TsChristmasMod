@@ -1,0 +1,19 @@
+package com.tsarhydrantine.tsbase.tsEntity.SkeletonBoss;
+
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.AbstractFireballEntity;
+import net.minecraft.entity.projectile.FireballEntity;
+import net.minecraft.world.World;
+
+public class GigaSnowballEntity extends FireballEntity{
+	
+	public GigaSnowballEntity(EntityType<? extends GigaSnowballEntity> type, World worldIn) {
+		super(type, worldIn);
+	}
+	
+	public GigaSnowballEntity(World worldIn, LivingEntity shooter, double accelX, double accelY, double accelZ) {
+		super(worldIn, shooter, accelX, accelY, accelZ);
+	}
+
+}

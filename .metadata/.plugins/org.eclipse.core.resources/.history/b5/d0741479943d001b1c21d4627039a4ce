@@ -1,0 +1,31 @@
+package com.tsarhydrantine.tsbase.tsItems;
+
+import java.util.function.Supplier;
+
+import com.tsarhydrantine.tsbase.Reference;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.TsArmorMaterials;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.TsItemTiers;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.TsVanguardShield;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.VanguardArmorItem;
+import com.tsarhydrantine.tsbase.tsItems.tsWeapons.TsGlaiveItem;
+
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.IItemTier;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemTier;
+import net.minecraft.item.Items;
+import net.minecraft.item.SwordItem;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+
+public class TsItems {
+	
+}

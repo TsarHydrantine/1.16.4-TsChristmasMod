@@ -1,0 +1,5 @@
+package com.tsarhydrantine.tsbase.tsItems;
+
+public class TsSpawnEggItem {
+
+}

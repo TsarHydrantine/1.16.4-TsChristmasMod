@@ -1,0 +1,101 @@
+package com.tsarhydrantine.tsbase;
+
+import java.util.function.Supplier;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.tsarhydrantine.tsbase.tsBlocks.SnowyBlock;
+import com.tsarhydrantine.tsbase.tsBlocks.SnowyLeavesBlock;
+import com.tsarhydrantine.tsbase.tsEntity.TsEntities;
+import com.tsarhydrantine.tsbase.tsItems.TsSpawnEggItem;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.TsArmorMaterials;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.TsItemTiers;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.FruitcakeArmor.FruitcakeArmorItem;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.RoyalIceArmor.RoyalIceArmorItem;
+import com.tsarhydrantine.tsbase.tsItems.tsWeapons.TsHammerItem;
+
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.block.SnowyDirtBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.HoeItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ShovelItem;
+import net.minecraft.item.SwordItem;
+import net.minecraft.util.Direction;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+
+public class TsRegistry {
+	
+	public static final Logger logger = LogManager.getLogger(TsBase.MODID);
+
+	public static final DeferredRegister<Block> BLOCKS =  DeferredRegister.create(ForgeRegistries.BLOCKS, TsBase.MODID);
+	public static final DeferredRegister<Item> ITEMS =  DeferredRegister.create(ForgeRegistries.ITEMS, TsBase.MODID);
+	
+	private static <T extends Block> RegistryObject<T> registerNoItem(String name, Supplier<T> block){
+		return TsRegistry.BLOCKS.register(name, block);
+	}
+	
+	private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block){
+		RegistryObject<T> ret = registerNoItem(name, block);
+		TsRegistry.ITEMS.register(name, () -> new BlockItem(ret.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
+		return ret;
+	}
+	
+	public static void register() {
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		BLOCKS.register(modEventBus);
+		ITEMS.register(modEventBus);
+	}
+	
+	//Mod Items
+	public static final RegistryObject<Item> CANDYCANE = ITEMS.register("candycane", () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
+	public static final RegistryObject<Item> CANDYCANE_CRYSTAL = ITEMS.register("candycane_crystal", () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
+	
+	//Mod Tools
+	public static final RegistryObject<Item> CANDYCANE_SWORD = ITEMS.register("candycane_sword", () -> new SwordItem(TsItemTiers.CANDYCANE, 3, -2.4F, (new Item.Properties()).group(ItemGroup.COMBAT)));
+	public static final RegistryObject<Item> CANDYCANE_AXE = ITEMS.register("candycane_axe", () -> new AxeItem(TsItemTiers.CANDYCANE, 6, -3.0F, (new Item.Properties()).group(ItemGroup.TOOLS)));
+	public static final RegistryObject<Item> CANDYCANE_SHOVEL = ITEMS.register("candycane_shovel", () -> new ShovelItem(TsItemTiers.CANDYCANE, 2, -2.8F, (new Item.Properties()).group(ItemGroup.TOOLS)));
+	public static final RegistryObject<Item> CANDYCANE_PICKAXE = ITEMS.register("candycane_pickaxe", () -> new PickaxeItem(TsItemTiers.CANDYCANE, 2, -3.0F, (new Item.Properties()).group(ItemGroup.TOOLS)));
+	public static final RegistryObject<Item> CANDYCANE_HOE = ITEMS.register("candycane_hoe", () -> new HoeItem(TsItemTiers.CANDYCANE, -2, 0.0F, (new Item.Properties()).group(ItemGroup.TOOLS)));
+	
+	//Mod Armor
+	public static final RegistryObject<Item> FRUITCAKE_HELMET = ITEMS.register("fruitcake_helmet", () -> new FruitcakeArmorItem(TsArmorMaterials.FRUITCAKE, EquipmentSlotType.HEAD, new Item.Properties().group(ItemGroup.COMBAT)));
+	public static final RegistryObject<Item> FRUITCAKE_CHESTPLATE = ITEMS.register("fruitcake_chestplate", () -> new FruitcakeArmorItem(TsArmorMaterials.FRUITCAKE, EquipmentSlotType.CHEST, new Item.Properties().group(ItemGroup.COMBAT)));
+	public static final RegistryObject<Item> FRUITCAKE_LEGGINGS = ITEMS.register("fruitcake_leggings", () -> new FruitcakeArmorItem(TsArmorMaterials.FRUITCAKE, EquipmentSlotType.LEGS, new Item.Properties().group(ItemGroup.COMBAT)));
+	public static final RegistryObject<Item> FRUITCAKE_BOOTS = ITEMS.register("fruitcake_boots", () -> new FruitcakeArmorItem(TsArmorMaterials.FRUITCAKE, EquipmentSlotType.FEET, new Item.Properties().group(ItemGroup.COMBAT)));
+	
+	public static final RegistryObject<Item> ROYAL_ICE_HELMET = ITEMS.register("royal_ice_helmet", () -> new RoyalIceArmorItem(TsArmorMaterials.ROYAL_ICE, EquipmentSlotType.HEAD, new Item.Properties().group(ItemGroup.COMBAT)));
+	public static final RegistryObject<Item> ROYAL_ICE_CHESTPLATE = ITEMS.register("royal_ice_chestplate", () -> new ArmorItem(TsArmorMaterials.ROYAL_ICE, EquipmentSlotType.CHEST, new Item.Properties().group(ItemGroup.COMBAT)));
+	public static final RegistryObject<Item> ROYAL_ICE_LEGGINGS = ITEMS.register("royal_ice_leggings", () -> new ArmorItem(TsArmorMaterials.ROYAL_ICE, EquipmentSlotType.LEGS, new Item.Properties().group(ItemGroup.COMBAT)));
+	public static final RegistryObject<Item> ROYAL_ICE_BOOTS = ITEMS.register("royal_ice_boots", () -> new ArmorItem(TsArmorMaterials.ROYAL_ICE, EquipmentSlotType.FEET, new Item.Properties().group(ItemGroup.COMBAT)));
+	
+	//Special Tools
+	public static final RegistryObject<Item> ROYAL_ICE_HAMMER = ITEMS.register("royal_ice_hammer", () -> new TsHammerItem(TsItemTiers.ROYAL_ICE, 8, -3.5F, (new Item.Properties()).group(ItemGroup.TOOLS)));
+	
+	//Spawn Eggs
+	public static final RegistryObject<Item> ICE_LORD_SPAWN_EGG = ITEMS.register("ice_lord_spawn_egg", () -> new TsSpawnEggItem(TsEntities.ICESKELTONBOSS, 0xA2DCFE, 0x67AADD, new Item.Properties().group(ItemGroup.MISC)));
+	
+	//Blocks
+	public static final RegistryObject<Block> CANDYCANE_BLOCK = register("candycane_block", () -> new RotatedPillarBlock(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(2).harvestLevel(1).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> GINGERBREAD_LEAVES = register("gingerbread_leaves", () -> new SnowyLeavesBlock(AbstractBlock.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid()));
+	public static final RegistryObject<Block> GINGERBREAD_LOG = register("gingerbread_log", () -> new Block(AbstractBlock.Properties.create(Material.WOOD).hardnessAndResistance(2).harvestLevel(0).sound(SoundType.WOOD)));
+	public static final RegistryObject<Block> GINGERBREAD_PLANK = register("gingerbread_plank", () -> new Block(AbstractBlock.Properties.create(Material.WOOD).hardnessAndResistance(2).harvestLevel(0).sound(SoundType.WOOD)));
+	public static final RegistryObject<Block> FRUITCAKE = register("fruitcake", () -> new RotatedPillarBlock(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(4).harvestLevel(2).sound(SoundType.NETHER_GOLD)));
+	public static final RegistryObject<Block> FRUITCAKE_BRICK = register("fruitcake_brick", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(4).harvestLevel(2).sound(SoundType.NETHER_GOLD)));
+	public static final RegistryObject<Block> ROYAL_ICE = register("royal_ice", () -> new Block(AbstractBlock.Properties.create(Material.PACKED_ICE).hardnessAndResistance(5).harvestLevel(1).sound(SoundType.GLASS).notSolid()));
+}

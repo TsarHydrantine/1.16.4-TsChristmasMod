@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "tschristmas:items/royal_ice_helmet"
+    }
+}

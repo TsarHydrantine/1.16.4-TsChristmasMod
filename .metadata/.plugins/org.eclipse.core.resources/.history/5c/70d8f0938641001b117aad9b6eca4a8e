@@ -1,0 +1,54 @@
+package com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor;
+
+import javax.annotation.Nullable;
+
+import net.minecraft.client.renderer.entity.model.BipedModel;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.ItemStack;
+
+public class FruitcakeArmorItem extends ArmorItem {
+
+	public FruitcakeArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builder) {
+		super(materialIn, slot, builder);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Nullable
+	@Override
+	public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
+		FruitcakeArmorModel model = new FruitcakeArmorModel(1F);
+		model.Head.showModel = armorSlot == EquipmentSlotType.HEAD;
+		
+		model.Body.showModel = armorSlot == EquipmentSlotType.CHEST;
+		
+		model.Waist.showModel = armorSlot == EquipmentSlotType.LEGS;
+		model.LeftLeg.showModel = armorSlot == EquipmentSlotType.LEGS;
+		model.RightLeg.showModel = armorSlot == EquipmentSlotType.LEGS;
+		
+		model.LeftFoot.showModel = armorSlot == EquipmentSlotType.FEET;
+		model.RightFoot.showModel = armorSlot == EquipmentSlotType.FEET;
+		
+		model.isChild = _default.isChild;
+		model.isSneak = _default.isSneak;
+		model.isSitting = _default.isSitting;
+		model.rightArmPose = _default.rightArmPose;
+		model.leftArmPose = _default.leftArmPose;
+
+		return (A) model;
+	}
+	
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type)
+	{
+		if(slot != EquipmentSlotType.LEGS) {
+			return "tschristmas:textures/models/armor/fruitcake_top_layer.png";
+		} else {
+			return "tschristmas:textures/models/armor/fruitcake_legging_layer.png";
+		}
+	}
+
+}

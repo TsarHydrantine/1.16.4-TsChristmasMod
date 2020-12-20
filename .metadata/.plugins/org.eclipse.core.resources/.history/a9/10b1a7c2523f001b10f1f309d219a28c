@@ -1,0 +1,87 @@
+package com.tsarhydrantine.tsbase;
+
+import java.util.function.Supplier;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.TsArmorMaterials;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.TsItemTiers;
+import com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor.VanguardArmorItem;
+
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.AbstractBlock.IPositionPredicate;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.HoeItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemTier;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ShovelItem;
+import net.minecraft.item.SwordItem;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+
+public class TsRegistry {
+	
+	public static final Logger logger = LogManager.getLogger(Reference.MOD_ID);
+
+	public static final DeferredRegister<Block> BLOCKS =  DeferredRegister.create(ForgeRegistries.BLOCKS, TsBase.MODID);
+	public static final DeferredRegister<Item> ITEMS =  DeferredRegister.create(ForgeRegistries.ITEMS, TsBase.MODID);
+	
+	private static <T extends Block> RegistryObject<T> registerNoItem(String name, Supplier<T> block){
+		return TsRegistry.BLOCKS.register(name, block);
+	}
+	
+	private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block){
+		RegistryObject<T> ret = registerNoItem(name, block);
+		TsRegistry.ITEMS.register(name, () -> new BlockItem(ret.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
+		return ret;
+	}
+	
+	public static void register() {
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		BLOCKS.register(modEventBus);
+		ITEMS.register(modEventBus);
+	}
+	
+	public static final RegistryObject<Item> CANDYCANE = ITEMS.register("candycane", () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
+	public static final RegistryObject<Item> CANDYCANE_CRYSTAL = ITEMS.register("candycane_crystal", () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
+	
+	public static final RegistryObject<Item> CANDYCANE_SWORD = ITEMS.register("candycane_sword", () -> new SwordItem(TsItemTiers.CANDYCANE, 3, -2.4F, (new Item.Properties()).group(ItemGroup.COMBAT)));
+	public static final RegistryObject<Item> CANDYCANE_AXE = ITEMS.register("candycane_axe", () -> new AxeItem(TsItemTiers.CANDYCANE, 2, -3.0F, (new Item.Properties()).group(ItemGroup.TOOLS)));
+	public static final RegistryObject<Item> CANDYCANE_SHOVEL = ITEMS.register("candycane_shovel", () -> new ShovelItem(TsItemTiers.CANDYCANE, 2, -2.8F, (new Item.Properties()).group(ItemGroup.TOOLS)));
+	public static final RegistryObject<Item> CANDYCANE_PICKAXE = ITEMS.register("candycane_pickaxe", () -> new PickaxeItem(TsItemTiers.CANDYCANE, 5, -3.0F, (new Item.Properties()).group(ItemGroup.TOOLS)));
+	public static final RegistryObject<Item> CANDYCANE_HOE = ITEMS.register("candycane_hoe", () -> new HoeItem(TsItemTiers.CANDYCANE, -2, 0.0F, (new Item.Properties()).group(ItemGroup.TOOLS)));
+	
+	//public static final RegistryObject<Item> FRUITCAKE_HELMET = ITEMS.register("fruitcake_helmet", () -> new 
+	//public static final RegistryObject<Item> FRUITCAKE_CHESTPLATE = ITEMS.register("fruitcake_chestplate", () -> new 
+	//public static final RegistryObject<Item> FRUITCAKE_LEGGINGS = ITEMS.register("fruitcake_leggings", () -> new 
+	//public static final RegistryObject<Item> FRUITCAKE_BOOTS = ITEMS.register("fruitcake_boots", () -> new 
+	
+	//public static final RegistryObject<Item> ROYAL_ICE_HELMET = ITEMS.register("royal_ice_helmet", () -> new 
+	//public static final RegistryObject<Item> ROYAL_ICE_CHESTPLATE = ITEMS.register("royal_ice_chestplate", () -> new 
+	//public static final RegistryObject<Item> ROYAL_ICE_LEGGINGS = ITEMS.register("royal_ice_leggings", () -> new 
+	//public static final RegistryObject<Item> ROYAL_ICE_BOOTS = ITEMS.register("royal_ice_boots", () -> new 
+	
+	public static final RegistryObject<Block> CANDYCANE_BLOCK = register("candycane_block", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(2).harvestLevel(1).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> GINGERBREAD_LEAVES = register("gingerbread_leaves", () -> new LeavesBlock(AbstractBlock.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid()));
+	public static final RegistryObject<Block> GINGERBREAD_LOG = register("gingerbread_log", () -> new Block(AbstractBlock.Properties.create(Material.WOOD).hardnessAndResistance(2).harvestLevel(0).sound(SoundType.WOOD)));
+	public static final RegistryObject<Block> GINGERBREAD_PLANK = register("gingerbread_plank", () -> new Block(AbstractBlock.Properties.create(Material.WOOD).hardnessAndResistance(2).harvestLevel(0).sound(SoundType.WOOD)));
+	public static final RegistryObject<Block> FRUITCAKE = register("fruitcake", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(4).harvestLevel(2).sound(SoundType.NETHER_GOLD)));
+	public static final RegistryObject<Block> FRUITCAKE_BRICK = register("fruitcake_brick", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(4).harvestLevel(2).sound(SoundType.NETHER_GOLD)));
+	public static final RegistryObject<Block> ROYAL_ICE = register("royal_ice", () -> new Block(AbstractBlock.Properties.create(Material.PACKED_ICE).hardnessAndResistance(5).harvestLevel(2).sound(SoundType.GLASS).notSolid()));
+	
+	
+	//public static final RegistryObject<Item> VANGUARD_HELMET =  ITEMS.register("vanguard_helmet", () -> new VanguardArmorItem(TsArmorMaterials.VANGUARD, EquipmentSlotType.HEAD, (new Item.Properties()).group(ItemGroup.COMBAT)));	
+}

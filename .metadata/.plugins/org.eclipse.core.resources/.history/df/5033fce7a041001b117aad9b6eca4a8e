@@ -1,0 +1,35 @@
+package com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor;
+
+import net.minecraft.client.renderer.entity.model.BipedModel;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.ItemStack;
+
+public class FruitcakeArmorItem extends ArmorItem {
+
+	public FruitcakeArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builder) {
+		super(materialIn, slot, builder);
+	}
+
+	private final FruitcakeArmorModel model = new FruitcakeArmorModel(1F);
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
+		return (A) model;
+	}
+	
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type)
+	{
+		if(slot != EquipmentSlotType.LEGS) {
+			return "tschristmas:textures/models/armor/fruitcake_layer_1.png";
+		} else {
+			return "tschristmas:textures/models/armor/fruitcake_layer_2.png";
+		}
+	}
+
+}

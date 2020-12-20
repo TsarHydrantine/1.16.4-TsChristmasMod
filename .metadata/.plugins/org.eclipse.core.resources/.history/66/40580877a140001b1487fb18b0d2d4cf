@@ -1,0 +1,13 @@
+package com.tsarhydrantine.tsbase.tsEntity.SkeletonBoss;
+
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.FireballEntity;
+import net.minecraft.world.World;
+
+public class GigaSnowballRenderer extends FireballEntity{
+
+	public GigaSnowballRenderer(World worldIn, LivingEntity shooter, double accelX, double accelY, double accelZ) {
+		super(worldIn, shooter, accelX, accelY, accelZ);
+	}
+
+}

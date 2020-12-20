@@ -1,0 +1,103 @@
+// Made with Blockbench 3.7.4
+package com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor;
+
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
+
+import net.minecraft.client.renderer.entity.model.BipedModel;
+import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+
+public class RoyalIceArmorModel extends BipedModel<LivingEntity> {
+	public final ModelRenderer Body;
+	public final ModelRenderer Waist;
+	public final ModelRenderer RightLeg;
+	public final ModelRenderer LeftLeg;
+	public final ModelRenderer Head;
+	public final ModelRenderer HornsRight;
+	public final ModelRenderer HornRight;
+	public final ModelRenderer HornsLeft;
+	public final ModelRenderer HornLeft;
+
+	public RoyalIceArmorModel(float size) {
+		super(size);
+		textureWidth = 64;
+		textureHeight = 64;
+
+		Body = new ModelRenderer(this);
+		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+		this.bipedBody.addChild(Body);
+
+		Waist = new ModelRenderer(this);
+		Waist.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+		this.bipedBody.addChild(Waist);
+		
+		RightLeg = new ModelRenderer(this);
+		RightLeg.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+		this.bipedRightLeg.addChild(RightLeg);
+
+		LeftLeg = new ModelRenderer(this);
+		LeftLeg.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+		this.bipedLeftLeg.addChild(LeftLeg);
+
+		Head = new ModelRenderer(this);
+		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
+		Head.setTextureOffset(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.5F, false);
+
+		HornsRight = new ModelRenderer(this);
+		HornsRight.setRotationPoint(0.0F, -8.5F, -6.0F);
+		Head.addChild(HornsRight);
+		setRotationAngle(HornsRight, -0.3054F, -0.2182F, 0.0F);
+		HornsRight.setTextureOffset(32, 6).addBox(1.0F, -1.5F, -3.0F, 3.0F, 3.0F, 6.0F, -0.5F, false);
+
+		HornRight = new ModelRenderer(this);
+		HornRight.setRotationPoint(0.0F, -1.306F, -2.5088F);
+		HornsRight.addChild(HornRight);
+		setRotationAngle(HornRight, -1.5708F, 0.0F, 0.0F);
+		HornRight.setTextureOffset(32, 6).addBox(1.0F, -1.5F, -3.0F, 3.0F, 3.0F, 6.0F, -0.75F, false);
+
+		HornsLeft = new ModelRenderer(this);
+		HornsLeft.setRotationPoint(-5.0F, -8.5F, -5.0F);
+		Head.addChild(HornsLeft);
+		setRotationAngle(HornsLeft, -0.3054F, 0.2182F, 0.0F);
+		HornsLeft.setTextureOffset(32, 6).addBox(1.0F, -1.5F, -3.0F, 3.0F, 3.0F, 6.0F, -0.5F, false);
+
+		HornLeft = new ModelRenderer(this);
+		HornLeft.setRotationPoint(0.0F, -1.306F, -2.5088F);
+		HornsLeft.addChild(HornLeft);
+		setRotationAngle(HornLeft, -1.5708F, 0.0F, 0.0F);
+		HornLeft.setTextureOffset(32, 6).addBox(1.0F, -1.5F, -3.0F, 3.0F, 3.0F, 6.0F, -0.75F, false);
+		
+		this.bipedHead.addChild(Head);
+	}
+	
+	@Override
+	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+		Head.render(matrixStack, buffer, packedLight, packedOverlay);
+		Body.render(matrixStack, buffer, packedLight, packedOverlay);
+		Waist.render(matrixStack, buffer, packedLight, packedOverlay);
+		RightLeg.render(matrixStack, buffer, packedLight, packedOverlay);
+		LeftLeg.render(matrixStack, buffer, packedLight, packedOverlay);
+	}
+
+	@Override
+	public void setRotationAngles(LivingEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		super.setRotationAngles(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		this.Head.copyModelAngles(this.bipedHead);
+		this.Body.copyModelAngles(this.bipedBody);
+		this.RightLeg.copyModelAngles(this.bipedRightLeg);
+		this.LeftLeg.copyModelAngles(this.bipedLeftLeg);
+	}
+
+	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+		modelRenderer.rotateAngleX = x;
+		modelRenderer.rotateAngleY = y;
+		modelRenderer.rotateAngleZ = z;
+	}
+}

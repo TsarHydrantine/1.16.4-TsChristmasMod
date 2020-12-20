@@ -1,0 +1,64 @@
+package com.tsarhydrantine.tsbase.tsItems.tsToolAndArmor;
+
+import java.util.function.Supplier;
+
+import com.tsarhydrantine.tsbase.TsRegistry;
+
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.LazyValue;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
+
+public enum TsArmorMaterials implements IArmorMaterial {
+
+	FRUITCAKE("tschristmas:fruitcake", 5, new int[] { 3, 7, 8, 4}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, () -> { return Ingredient.fromItems(TsRegistry.FRUITCAKE.get()); }, 0.1F),
+	ROYAL_ICE("tschristmas:royal_ice", 33, new int[] { 3, 6, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, () -> { return Ingredient.fromItems(TsRegistry.ROYAL_ICE.get()); }, 0.0F);
+
+	private static final int[] MAX_DAMAGE_ARRAY = new int[] { 13, 15, 16, 11 };
+	private final String name;
+	private final int maxDamageFactor;
+	private final int[] damageReductionAmountArray;
+	private final int enchantability;
+	private final SoundEvent soundEvent;
+	private final float toughness;
+	private final LazyValue<Ingredient> repairMaterial;
+	private final float knockbackResistance;
+
+	private TsArmorMaterials(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountsIn, int enchantabilityIn, SoundEvent equipSoundIn, float toughnessIn, Supplier<Ingredient> repairMaterialSupplier, float knockbackResistance) {
+		this.name = nameIn;
+		this.maxDamageFactor = maxDamageFactorIn;
+		this.damageReductionAmountArray = damageReductionAmountsIn;
+		this.enchantability = enchantabilityIn;
+		this.soundEvent = equipSoundIn;
+		this.toughness = toughnessIn;
+		this.repairMaterial = new LazyValue<>(repairMaterialSupplier);
+		this.knockbackResistance = knockbackResistance;
+	}
+
+	@Override
+	public int getDurability(EquipmentSlotType slotIn) { return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor; }
+
+	@Override
+	public int getDamageReductionAmount(EquipmentSlotType slotIn) { return this.damageReductionAmountArray[slotIn.getIndex()]; }
+
+	@Override
+	public int getEnchantability() { return this.enchantability; }
+
+	@Override
+	public SoundEvent getSoundEvent() { return this.soundEvent; }
+
+	@Override
+	public Ingredient getRepairMaterial() { return this.repairMaterial.getValue(); }
+	
+	@Override
+	public float getToughness() { return this.toughness; }
+
+	@Override
+	public String getName() { return name; }
+
+	@Override
+	public float getKnockbackResistance() { return knockbackResistance; }
+
+}

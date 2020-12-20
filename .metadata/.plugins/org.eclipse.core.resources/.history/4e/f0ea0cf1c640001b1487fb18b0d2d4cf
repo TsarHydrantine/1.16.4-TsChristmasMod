@@ -1,0 +1,18 @@
+package com.tsarhydrantine.tsbase.tsItems;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.entity.EntityType;
+import net.minecraft.item.SpawnEggItem;
+
+public class TsSpawnEggItem extends SpawnEggItem{
+
+	protected static final List<TsSpawnEggItem> unaddedEggs = new ArrayList<>();
+	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
+	
+	public TsSpawnEggItem(EntityType<?> typeIn, int primaryColorIn, int secondaryColorIn, Properties builder) {
+		super(typeIn, primaryColorIn, secondaryColorIn, builder);
+	}
+	
+}

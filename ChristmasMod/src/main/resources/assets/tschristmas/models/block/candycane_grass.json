@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "tschristmas:blocks/candycane_grass"
+  }
+}

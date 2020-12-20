@@ -1,0 +1,37 @@
+package com.tsarhydrantine.tsbase.tsEntity.SkeletonBoss;
+
+import com.mojang.blaze3d.matrix.MatrixStack;
+
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.SkeletonRenderer;
+import net.minecraft.client.renderer.entity.layers.BipedArmorLayer;
+import net.minecraft.client.renderer.entity.layers.HeldItemLayer;
+import net.minecraft.client.renderer.entity.model.BipedModel;
+import net.minecraft.client.renderer.entity.model.GiantModel;
+import net.minecraft.client.renderer.entity.model.SkeletonModel;
+import net.minecraft.entity.monster.AbstractSkeletonEntity;
+import net.minecraft.entity.monster.GiantEntity;
+import net.minecraft.util.ResourceLocation;
+
+public class IceSkeletonRenderer extends MobRenderer<IceSkeletonEntity, BipedModel<IceSkeletonEntity>> {
+	private static final ResourceLocation SKELETON_TEXTURES = new ResourceLocation(
+			"textures/entity/skeleton/skeleton.png");
+	private final float scale;
+
+	public IceSkeletonRenderer(EntityRendererManager renderManagerIn, float scaleIn) {
+		super(renderManagerIn, new SkeletonModel(), 0.5F * scaleIn);
+		this.scale = scaleIn;
+		this.addLayer(new HeldItemLayer<>(this));
+		this.addLayer(new BipedArmorLayer<>(this, new SkeletonModel(0.5F, true), new SkeletonModel(1.0F, true)));
+	}
+
+	protected void preRenderCallback(GiantEntity entitylivingbaseIn, MatrixStack matrixStackIn, float partialTickTime) {
+		matrixStackIn.scale(this.scale, this.scale, this.scale);
+	}
+
+	@Override
+	public ResourceLocation getEntityTexture(IceSkeletonEntity entity) {
+		return SKELETON_TEXTURES;
+	}
+}

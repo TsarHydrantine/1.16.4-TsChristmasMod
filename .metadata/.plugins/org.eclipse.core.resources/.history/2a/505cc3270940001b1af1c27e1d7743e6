@@ -1,0 +1,15 @@
+package com.tsarhydrantine.tsbase.client;
+
+import com.tsarhydrantine.tsbase.tsEntity.TsEntities;
+import com.tsarhydrantine.tsbase.tsEntity.IchorianGiant.IchorianGiantRenderer;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+
+
+public class ClientHandler
+{
+    public static void setup()
+    {
+        RenderingRegistry.registerEntityRenderingHandler(TsEntities.ICHORIAN_GIANT, IchorianGiantRenderer::new);
+    }
+    
+}

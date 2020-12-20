@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "tschristmas:block/candycane_block_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "tschristmas:block/candycane_block"
+    },
+    "axis=z": {
+      "model": "tschristmas:block/candycane_block_horizontal",
+      "x": 90
+    }
+  }
+}

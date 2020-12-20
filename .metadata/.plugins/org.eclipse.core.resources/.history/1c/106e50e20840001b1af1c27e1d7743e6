@@ -1,0 +1,26 @@
+package com.tsarhydrantine.tsbase.tsEntity.IchorianGiant;
+
+import java.util.function.Predicate;
+
+import com.tsarhydrantine.tsbase.tsEntity.TsEntities;
+
+import net.minecraft.entity.CreatureAttribute;
+import net.minecraft.entity.CreatureEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.world.World;
+
+public class IchorianGiantEntity extends CreatureEntity {
+
+	// Delays attacks
+	private int attackTimer;
+
+	// Sets up avoidance
+	public static final Predicate<LivingEntity> NOT_PASSIVE = (p_213797_0_) -> {
+		return p_213797_0_.getCreatureAttribute() != CreatureAttribute.UNDEFINED && p_213797_0_.attackable();
+	};
+
+	public IchorianGiantEntity(World worldIn) {
+		super(TsEntities.ICHORIAN_GIANT, worldIn);
+	}
+
+}

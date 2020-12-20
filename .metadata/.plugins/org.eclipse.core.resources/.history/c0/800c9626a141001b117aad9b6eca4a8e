@@ -1,0 +1,6 @@
+package com.tsarhydrantine.tsbase;
+
+public class Reference
+{
+    public static final String MOD_ID = "tschristmas";
+}

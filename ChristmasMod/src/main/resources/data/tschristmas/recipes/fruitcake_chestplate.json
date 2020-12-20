@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "tschristmas:fruitcake"
+    }
+  },
+  "result": {
+    "item": "tschristmas:fruitcake_chestplate"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "tschristmas:block/gingerbread_leaves"
+    },
+    "snowy=true": {
+      "model": "tschristmas:block/gingerbread_leaves_snow"
+    }
+  }
+}

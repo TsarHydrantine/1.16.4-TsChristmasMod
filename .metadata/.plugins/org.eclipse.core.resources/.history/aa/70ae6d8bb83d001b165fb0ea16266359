@@ -1,0 +1,29 @@
+package com.tsarhydrantine.tsbase.data.client;
+
+import com.tsarhydrantine.tsbase.TsBase;
+
+import net.minecraft.data.DataGenerator;
+import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.data.ExistingFileHelper;
+
+public class ModdedItemModelProvider extends ItemModelProvider{
+
+	public ModdedItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
+		super(generator, TsBase.MODID, existingFileHelper);
+	}
+	
+	private void builder(ModelFile mf, String name) {
+		getBuilder(name).parent(mf).texture("layer0", "item/" + name);
+	}
+	
+	@Override
+	protected void registerModels() {
+		withExistingParent("candycane_block", modLoc("block/candycane_block"));
+		
+		ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
+		
+		builder(mf, "candycane");
+	}
+	
+}

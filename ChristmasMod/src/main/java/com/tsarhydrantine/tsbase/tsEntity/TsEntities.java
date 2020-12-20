@@ -1,0 +1,22 @@
+package com.tsarhydrantine.tsbase.tsEntity;
+
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.projectile.SnowballEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import com.tsarhydrantine.tsbase.TsBase;
+import com.tsarhydrantine.tsbase.tsEntity.SkeletonBoss.GigaSnowballEntity;
+import com.tsarhydrantine.tsbase.tsEntity.SkeletonBoss.IceSkeletonEntity;
+
+@Mod.EventBusSubscriber(modid = TsBase.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class TsEntities
+{
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, TsBase.MODID);
+
+    // Entity Types
+    public static final RegistryObject<EntityType<IceSkeletonEntity>> ICESKELTONBOSS = ENTITY_TYPES.register("iceskeletonboss", () -> EntityType.Builder.create(IceSkeletonEntity::new, EntityClassification.CREATURE).size(2.0f, 8.0f).build(new ResourceLocation(TsBase.MODID, "iceskeletonboss").toString()));
+}

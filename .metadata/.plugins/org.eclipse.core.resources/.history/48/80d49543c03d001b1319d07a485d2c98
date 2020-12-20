@@ -1,0 +1,23 @@
+package com.tsarhydrantine.tsbase.data.client;
+
+import com.tsarhydrantine.tsbase.TsBase;
+import com.tsarhydrantine.tsbase.TsRegistry;
+
+import net.minecraft.data.DataGenerator;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.common.data.ExistingFileHelper;
+
+public class ModdedBlockStateProvider extends BlockStateProvider{
+
+	public ModdedBlockStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
+		super(gen, TsBase.MODID, exFileHelper);
+	}
+
+	@Override
+	protected void registerStatesAndModels() {
+		simpleBlock(TsRegistry.CANDYCANE_BLOCK.get());
+		
+	}
+
+
+}

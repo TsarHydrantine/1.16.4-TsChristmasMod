@@ -1,0 +1,16 @@
+package com.tsarhydrantine.tsbase.tsBlocks;
+
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+
+public class MagicBlock extends Block {
+
+	public MagicBlock(Properties properties) {
+		super(properties);
+	}
+
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
+
+}

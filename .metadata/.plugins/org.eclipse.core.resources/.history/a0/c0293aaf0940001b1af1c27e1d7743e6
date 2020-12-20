@@ -1,0 +1,46 @@
+package com.tsarhydrantine.tsbase;
+
+import com.tsarhydrantine.tsbase.client.ClientHandler;
+import com.tsarhydrantine.tsbase.tsEntity.TsEntities;
+
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+@Mod("tschristmas")
+public class TsBase {
+	public static final String MODID = "tschristmas";
+	
+	//
+	public TsBase() {
+		TsRegistry.register();
+		
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+		
+		TsEntities.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+		
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+	
+	private void setup(final FMLCommonSetupEvent event) {
+		TsRegistry.logger.info("TsBase Starting...");
+	}
+	
+	private void enqueueIMC(final InterModEnqueueEvent event) {
+		
+	}
+	
+	private void processIMC(final InterModProcessEvent event) {
+		
+	}
+	
+	private void doClientStuff(final FMLClientSetupEvent event) {
+
+	}
+	
+}

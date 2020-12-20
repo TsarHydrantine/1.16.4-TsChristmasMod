@@ -1,0 +1,38 @@
+{
+    "item.tschristmas.candycane": "Candycane",
+    "item.tschristmas.candycane_crystal": "Candycane Crystal",
+    
+    "item.tschristmas.candycane_sword": "Candycane Sword",
+    "item.tschristmas.candycane_axe": "Candycane Axe",
+    "item.tschristmas.candycane_shovel": "Candycane Shovel",
+    "item.tschristmas.candycane_pickaxe": "Candycane Pickaxe",
+    "item.tschristmas.candycane_hoe": "Candycane Hoe",
+    
+    "item.tschristmas.fruitcake_helmet": "Fruitcake Helmet",
+    "item.tschristmas.fruitcake_chestplate": "Fruitcake Chestplate",
+    "item.tschristmas.fruitcake_leggings": "Fruitcake Leggings",
+    "item.tschristmas.fruitcake_boots": "Fruitcake Boots",
+    
+    "item.tschristmas.royal_ice_helmet": "Royal Ice Helmet",
+    "item.tschristmas.royal_ice_chestplate": "Royal Ice Chestplate",
+    "item.tschristmas.royal_ice_leggings": "Royal Ice Leggings",
+    "item.tschristmas.royal_ice_boots": "Royal Ice Boots",
+    
+    "item.tschristmas.royal_ice_hammer": "Royal Ice Hammer",
+    
+    "item.tschristmas.ice_lord_spawn_egg": "Ice Lord Spawn Egg",
+    
+
+    "block.tschristmas.candycane_block": "Block of Candycane",
+    "block.tschristmas.gingerbread_leaves": "Gingerbread Leaves",
+    "block.tschristmas.gingerbread_log": "Gingerbread Log",
+    "block.tschristmas.gingerbread_plank": "Gingerbread Plank",
+    
+    "block.tschristmas.fruitcake": "Fruitcake",
+    "block.tschristmas.fruitcake_brick": "Fruitcake Brick",
+    
+    "block.tschristmas.royal_ice": "Royal Ice",
+    
+    
+    "entity.tschristmas.iceskeletonboss": "Royal Ice Lord"
+}

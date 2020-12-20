@@ -1,0 +1,34 @@
+package com.tsarhydrantine.tsbase.tsEntity;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+
+import com.tsarhydrantine.tsbase.Reference;
+import com.tsarhydrantine.tsbase.TsBase;
+import com.tsarhydrantine.tsbase.tsEntity.IchorianGiant.IchorianGiantEntity;
+import com.tsarhydrantine.tsbase.tsEntity.SkeletonBoss.IceSkeletonEntity;
+
+@Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class TsEntities
+{
+    private static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, TsBase.MODID);
+
+    public static final RegistryObject<EntityType<IceSkeletonEntity>> ICE_SKELETON_BOSS = ENTITY_TYPES.register("iceskeltonboss", 
+    		() -> EntityType.Builder.create(IceSkeletonEntity::new));
+    
+
+}
